@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - SalonEase</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(to bottom right, #edf7f5, #d9ece8);
+            overflow:hidden;
+        }
+
+        /* Background Blur Circles */
+
+        .circle1{
+            position:absolute;
+            width:300px;
+            height:300px;
+            background:#b7dfda;
+            border-radius:50%;
+            top:-80px;
+            left:-80px;
+            filter:blur(40px);
+            opacity:0.5;
+        }
+
+        .circle2{
+            position:absolute;
+            width:250px;
+            height:250px;
+            background:#cde9e5;
+            border-radius:50%;
+            bottom:-70px;
+            right:-70px;
+            filter:blur(40px);
+            opacity:0.6;
+        }
+
+        /* Login Card */
+
+        .login-container{
+            width:390px;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(12px);
+            padding:40px;
+            border-radius:28px;
+            box-shadow:0 8px 30px rgba(0,0,0,0.08);
+            border:1px solid rgba(255,255,255,0.4);
+            position:relative;
+            z-index:10;
+        }
+
+        .logo{
+            text-align:center;
+            margin-bottom:10px;
+            font-size:38px;
+        }
+
+        h2{
+            text-align:center;
+            color:#2b4341;
+            margin-bottom:8px;
+            font-size:30px;
+            font-weight:700;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:#6c8b88;
+            font-size:14px;
+            margin-bottom:30px;
+        }
+
+        .input-box{
+            margin-bottom:20px;
+        }
+
+        .input-box label{
+            display:block;
+            margin-bottom:8px;
+            color:#355c58;
+            font-size:14px;
+            font-weight:500;
+        }
+
+        .input-box input{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:14px;
+            background:#f4fbfa;
+            font-size:15px;
+            outline:none;
+            transition:0.3s;
+            border:1px solid transparent;
+        }
+
+        .input-box input:focus{
+            border:1px solid #78beb8;
+            background:white;
+            box-shadow:0 0 8px rgba(120,190,184,0.2);
+        }
+
+        .login-btn{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:14px;
+            background:#69b7b0;
+            color:white;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        .login-btn:hover{
+            background:#57a7a0;
+            transform:translateY(-2px);
+        }
+
+        .error{
+            color:#d9534f;
+            text-align:center;
+            margin-bottom:15px;
+            font-size:14px;
+        }
+
+        .bottom-text{
+            text-align:center;
+            margin-top:25px;
+            color:#6d8a87;
+            font-size:13px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Decorative Background -->
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+    <!-- Login Card -->
+    <div class="login-container">
+
+        <div class="logo">✂️</div>
+
+        <h2>Admin Login</h2>
+
+        <p class="subtitle">
+            Welcome back to SalonEase Admin Panel
+        </p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+
+            <div class="input-box">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter admin email" required>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <div class="bottom-text">
+            SalonEase Administration Access
+        </div>
+
+    </div>
+
+</body>
+</html>

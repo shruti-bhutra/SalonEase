@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manage Appointments - SalonEase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#eef7f5;
+    padding:40px;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    color:#264653;
+    font-size:34px;
+}
+
+.manage-btn{
+    background:#69b7b0;
+    color:white;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.manage-btn:hover{
+    background:#57a7a0;
+    transform:translateY(-2px);
+}
+
+/* TABLE SECTION */
+
+.table-container{
+    background:white;
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#69b7b0;
+    color:white;
+    padding:16px;
+    font-size:15px;
+}
+
+table td{
+    padding:18px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+    color:#4b5d5b;
+}
+
+table tr:hover{
+    background:#f8fcfb;
+}
+
+/* STATUS */
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+}
+
+.confirmed{
+    background:#d4f7dc;
+    color:#2e8b57;
+}
+
+.pending{
+    background:#fff4d6;
+    color:#c48a00;
+}
+
+.completed{
+    background:#dceeff;
+    color:#2d6cdf;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-block;
+    margin-top:40px;
+    background:#264653;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:14px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#1d3742;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>Manage Appointments</h1>
+
+    <a href="#" class="manage-btn">
+        Appointment Records
+    </a>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+<table>
+
+    <tr>
+
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Payment</th>
+        <th>Status</th>
+        <th>Actions</th>
+
+    </tr>
+
+    {% for appointment in appointments %}
+
+    <tr>
+
+        <td>{{ appointment[0] }}</td>
+        <td>{{ appointment[1] }}</td>
+        <td>{{ appointment[2] }}</td>
+        <td>{{ appointment[3] }}</td>
+        <td>{{ appointment[4] }}</td>
+         <td>{{ appointment[5] }}</td>
+         <td>{{ appointment[6] }}</td>
+         
+
+        <td>
+
+            {% if appointment[6] == 'Pending' %}
+
+                <span class="status pending">
+                    Pending
+                </span>
+
+            {% elif appointment[6] == 'Confirmed' %}
+
+                <span class="status confirmed">
+                    Confirmed
+                </span>
+
+            {% elif appointment[6] == 'Completed' %}
+
+                <span class="status completed">
+                    Completed
+                </span>
+
+            {% else %}
+
+                <span class="status">
+                    {{ appointment[6] }}
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            <a href="/confirm_appointment/{{ appointment[0] }}"
+               class="manage-btn"
+               style="padding:8px 14px; font-size:13px;">
+
+               Confirm
+
+            </a>
+
+            <a href="/complete_appointment/{{ appointment[0] }}"
+               class="manage-btn"
+               style="padding:8px 14px; font-size:13px; background:#2d6cdf;">
+
+               Complete
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+</div>
+
+<!-- BACK BUTTON -->
+
+<a href="/admin_dashboard" class="back-btn">
+    ← Back to Dashboard
+</a>
+</body>
+</html>+

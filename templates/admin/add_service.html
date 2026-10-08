@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Service</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#eef7f5;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-box{
+    width:420px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.form-box h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#264653;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    color:#264653;
+}
+
+.input-box input,
+.input-box select{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#f4fbfa;
+    border-radius:12px;
+    outline:none;
+}
+
+.submit-btn{
+    width:100%;
+    padding:14px;
+    background:#69b7b0;
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    background:#57a7a0;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#264653;
+}
+.subtitle{
+    text-align:center;
+    color:#6c8b88;
+    margin-bottom:25px;
+    font-size:14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h1>Add Service</h1>
+    <p class="subtitle">
+    Add new salon services for customers
+    </p>
+    <form method="POST">
+
+        <div class="input-box">
+
+            <label>Service Name</label>
+
+            <input type="text"
+                   name="name"
+                   required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Price</label>
+
+            <input type="text"
+                   name="price"
+                   placeholder="₹999"
+                   required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Category</label>
+
+            <select name="category" required>
+
+                <option value="">Select Category</option>
+
+                <option value="male">Male</option>
+
+                <option value="female">Female</option>
+
+            </select>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Image URL</label>
+
+            <input type="text"
+                   name="image"
+                   placeholder="Paste image URL"
+                   required>
+
+        </div>
+
+        <button type="submit"
+                class="submit-btn">
+
+            Add Service
+
+        </button>
+
+    </form>
+
+    <a href="/manage_services" class="back">
+        ← Back
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manage Services - SalonEase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#eef7f5;
+    padding:40px;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    color:#264653;
+    font-size:34px;
+}
+
+.add-btn{
+    background:#69b7b0;
+    color:white;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    background:#57a7a0;
+    transform:translateY(-2px);
+}
+
+/* GRID */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+
+.service-card{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-6px);
+}
+
+.service-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.category{
+    display:inline-block;
+    background:#dff4f2;
+    color:#3f7d78;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.card-content h2{
+    color:#264653;
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.card-content p{
+    color:#6d8a87;
+    line-height:1.6;
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+.price{
+    color:#69b7b0;
+    font-size:24px;
+    font-weight:700;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-block;
+    margin-top:45px;
+    background:#264653;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:14px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#1d3742;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>Manage Services</h1>
+
+    <a href="/add_service" class="add-btn">
+        + Add Service
+    </a>
+
+</div>
+
+<!-- SERVICES GRID -->
+
+<div class="services-grid">
+
+    <!-- CARD 1 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f">
+
+        <div class="card-content">
+
+            <div class="category">Male</div>
+
+            <h2>Haircut</h2>
+
+            <p>
+                Stylish professional haircut service with modern grooming.
+            </p>
+
+            <div class="price">₹499</div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+
+        <div class="card-content">
+
+            <div class="category">Female</div>
+
+            <h2>Hair Spa</h2>
+
+            <p>
+                Relaxing nourishing hair spa treatment for silky smooth hair.
+            </p>
+
+            <div class="price">₹999</div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
+
+        <div class="card-content">
+
+            <div class="category">Female</div>
+
+            <h2>Facial</h2>
+
+            <p>
+                Deep cleansing facial treatment for glowing healthy skin.
+            </p>
+
+            <div class="price">₹1299</div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+
+        <div class="card-content">
+
+            <div class="category">Male</div>
+
+            <h2>Beard Grooming</h2>
+
+            <p>
+                Professional beard trimming and styling for modern look.
+            </p>
+
+            <div class="price">₹399</div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 5 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f">
+
+        <div class="card-content">
+
+            <div class="category">Female</div>
+
+            <h2>Makeup</h2>
+
+            <p>
+                Elegant party and bridal makeup with premium products.
+            </p>
+
+            <div class="price">₹2499</div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 6 -->
+
+    <div class="service-card">
+
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e">
+
+        <div class="card-content">
+
+            <div class="category">Female</div>
+
+            <h2>Hair Coloring</h2>
+
+            <p>
+                Trendy hair coloring and smooth finishing by experts.
+            </p>
+
+            <div class="price">₹1799</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- BACK BUTTON -->
+
+<a href="/admin_dashboard" class="back-btn">
+    ← Back to Dashboard
+</a>
+
+</body>
+</html>

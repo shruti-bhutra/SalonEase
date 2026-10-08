@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SalonEase Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#e6f2f1,#d1ecea);
+    color:#2c2c2c;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 60px;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+.nav-links a{
+    margin:0 12px;
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+.nav-links a.active{
+    color:#1f6f6d;
+}
+
+/* HERO */
+
+header{
+    text-align:center;
+    padding:90px 10% 60px;
+}
+
+header h1{
+    font-size:52px;
+    color:#1f6f6d;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:18px;
+    color:#555;
+}
+
+/* FILTER */
+
+.filter-container{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:50px;
+}
+
+.filter-container button{
+    padding:13px 28px;
+    border:none;
+    background:white;
+    color:#1f6f6d;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.category-title{
+    width:90%;
+    max-width:1350px;
+    margin:50px auto 25px;
+}
+
+.category-title h2{
+    font-size:34px;
+    color:#1f6f6d;
+    margin-bottom:8px;
+}
+
+.category-title p{
+    color:#666;
+    font-size:16px;
+}
+.filter-container button:hover{
+    background:linear-gradient(135deg,#3ba4a1,#1f6f6d);
+    color:white;
+    transform:translateY(-3px);
+}
+
+/* SECTION TITLE */
+
+.section-heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-heading h2{
+    font-size:38px;
+    color:#1f6f6d;
+    margin-bottom:10px;
+}
+
+.section-heading p{
+    color:#555;
+    font-size:16px;
+}
+/* SERVICES */
+
+.services-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:28px;
+    padding-bottom:50px;
+}
+
+/* CARD */
+.service-card{
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(12px);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:all 0.35s ease;
+
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+/* CARD HOVER */
+
+.service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(31,111,109,0.18);
+}
+
+/* IMAGE */
+
+.service-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    transition:0.4s ease;
+}
+
+.service-card:hover img{
+    transform:scale(1.05);
+}
+
+/* CONTENT */
+.service-content{
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+/* TITLE */
+
+.service-content h2{
+    color:#1f6f6d;
+    margin-bottom:10px;
+    font-size:24px;
+    font-weight:600;
+}
+
+/* DESCRIPTION */
+
+.service-content p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:16px;
+    font-size:15px;
+}
+
+/* DETAILS */
+
+.details{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#777;
+    font-size:14px;
+}
+
+/* PRICE */
+
+.price{
+    font-size:24px;
+    color:#1f6f6d;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+/* BUTTON */
+
+.book-btn{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    background:linear-gradient(135deg,#3ba4a1,#1f6f6d);
+    color:white;
+    text-decoration:none;
+    padding:13px;
+    border-radius:12px;
+    transition:0.3s ease;
+    font-weight:600;
+    font-size:15px;
+    margin-top:auto;
+}
+
+/* BUTTON HOVER */
+
+.book-btn:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg,#2f908d,#175a58);
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .services-container{
+        grid-template-columns:1fr;
+    }
+
+    .service-card img{
+        height:200px;
+    }
+
+}
+/* FOOTER */
+
+.footer{
+    background:#1f6f6d;
+    color:white;
+    margin-top:60px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    padding:40px 60px;
+    flex-wrap:wrap;
+}
+
+.footer-section{
+    max-width:250px;
+}
+.footer-section h4{
+    margin-bottom:10px;
+}
+
+.footer-section a{
+    display:block;
+    color:#d1ecea;
+    text-decoration:none;
+    margin:5px 0;
+    transition:0.3s;
+}
+
+.footer-section a:hover{
+    color:white;
+    transform:translateX(5px);
+    color:white;
+    width: 100%;
+}
+
+.footer-bottom{
+    text-align:center;
+    padding:15px;
+    background:#175a58;
+    color: white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:15px 25px;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    header h1{
+        font-size:38px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        ✂ SalonEase
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('services_page') }}" class="active">
+            Services
+        </a>
+
+        <a href="{{ url_for('login') }}">
+            Login
+        </a>
+
+        <a href="{{ url_for('register') }}">
+            Sign Up
+        </a>
+
+    </div>
+
+</div>
+<header>
+
+    <h1>Our Services</h1>
+
+    <p>Book premium salon services easily with SalonEase</p>
+
+</header>
+<!-- FILTER BUTTONS -->
+
+<div class="filter-container">
+
+    <button onclick="filterSelection('all')">
+        All Services
+    </button>
+
+    <button onclick="filterSelection('male')">
+        Men's Services
+    </button>
+
+    <button onclick="filterSelection('female')">
+        Women's Services
+    </button>
+
+</div>
+<div class="male-section">
+
+<!-- MEN CATEGORY -->
+<div class="category-title male-title">
+
+    <h2>Men's Grooming</h2>
+
+    <p>
+        Professional grooming and styling services for men.
+    </p>
+
+</div>
+
+<div class="services-container">
+
+    <!-- SERVICE 1 -->
+
+    <div class="service-card male">
+            <img src="{{ url_for('static', filename='images/men spa.jpg') }}">
+        <div class="service-content">
+
+            <h2>Hair Spa</h2>
+
+            <p>
+                Deep nourishing spa treatment for healthy,
+                smooth and shiny hair.
+            </p>
+
+            <div class="details">
+                <span>⏱ 60 mins</span>
+                <span>⭐ 4.8</span>
+            </div>
+
+            <div class="price">₹999</div>
+                <a href="/booking?service=Hair Spa&price=999"
+   class="book-btn">
+
+   Add to Booking
+                </a>
+        </div>
+
+    </div>
+
+    <!-- SERVICE 2 -->
+
+    <div class="service-card male">
+            <img src="{{ url_for('static', filename='images/men haircut.jpg') }}">
+
+        <div class="service-content">
+
+            <h2>Haircut & Styling</h2>
+
+            <p>
+                Modern haircut and styling by professional salon experts.
+            </p>
+
+            <div class="details">
+                <span>⏱ 45 mins</span>
+                <span>⭐ 4.7</span>
+            </div>
+
+            <div class="price">₹499</div>
+                <a href="/booking?service=Haircut & Styling&price=499"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+
+    <!-- SERVICE 3 -->
+
+    <div class="service-card male">
+     <img src="{{ url_for('static', filename='images/beard grooming.jpg') }}">
+
+        <div class="service-content">
+
+            <h2>Beard Grooming</h2>
+
+            <p>
+                Premium beard trimming and styling for a sharp look.
+            </p>
+
+            <div class="details">
+                <span>⏱ 30 mins</span>
+                <span>⭐ 4.6</span>
+            </div>
+
+            <div class="price">₹399</div>
+
+           <a href="/booking?service=Beard Grooming&price=399"
+   class="book-btn">
+   Add to Booking
+</a>
+
+        </div>
+
+    </div>
+
+    <!-- SERVICE 4 -->
+
+    <div class="service-card male">
+         <img src="{{ url_for('static', filename='images/groom package.png') }}">
+
+        <div class="service-content">
+
+            <h2>Luxury Groom Package</h2>
+
+            <p>
+                Complete grooming package with spa,
+                haircut and facial treatment.
+            </p>
+
+            <div class="details">
+                <span>⏱ 2 hrs</span>
+                <span>⭐ 4.9</span>
+            </div>
+
+            <div class="price">₹3499</div>
+                <a href="/booking?service=Luxury Groom Package&price=3499"
+   class="book-btn">
+   Add to Booking
+</a>        
+        </div>
+
+    </div>
+
+    <!-- SERVICE 5 -->
+
+    <div class="service-card male">
+
+     <img src="{{ url_for('static', filename='images/men scalp.jpg') }}">
+
+        <div class="service-content">
+
+            <h2>Scalp Treatment</h2>
+
+            <p>
+                Advanced scalp therapy for dandruff control and healthy hair growth.
+            </p>
+
+            <div class="details">
+                <span>⏱ 50 mins</span>
+                <span>⭐ 4.7</span>
+            </div>
+
+            <div class="price">₹1199</div>
+
+            <a href="/booking?service=Scalp Treatment&price=1199"
+   class="book-btn">
+   Add to Booking
+</a>
+
+        </div>
+
+    </div>
+
+    <!-- SERVICE 6 -->
+
+    <div class="service-card male">
+     <img src="{{ url_for('static', filename='images/keratin treatment.jpg') }}">
+
+        <div class="service-content">
+
+            <h2>Keratin Treatment</h2>
+
+            <p>
+                Smoothening and strengthening treatment for soft and manageable hair.
+            </p>
+
+            <div class="details">
+                <span>⏱ 90 mins</span>
+                <span>⭐ 4.8</span>
+            </div>
+
+            <div class="price">₹2499</div>
+
+            <a href="/booking?service=Keratin Treatment&price=2499"
+   class="book-btn">
+   Add to Booking
+</a>
+
+        </div>
+
+    </div>
+
+    <!-- SERVICE 7 -->
+
+    <div class="service-card male">
+     <img src="{{ url_for('static', filename='images/men facial.jpeg') }}">
+
+        <div class="service-content">
+
+            <h2>Deep Clean Facial</h2>
+
+            <p>
+                Cleansing facial treatment specially designed for men's skin care.
+            </p>
+
+            <div class="details">
+                <span>⏱ 45 mins</span>
+                <span>⭐ 4.6</span>
+            </div>
+
+            <div class="price">₹899</div>
+
+            <a href="/booking?service=Deep Clean Facial&price=899"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+
+    <!-- SERVICE 8 -->
+
+    <div class="service-card male">
+     <img src="{{ url_for('static', filename='images/men head massage.webp') }}">
+
+        <div class="service-content">
+
+            <h2>Head Massage</h2>
+
+            <p>
+                Relaxing head massage therapy to reduce stress and improve circulation.
+            </p>
+
+            <div class="details">
+                <span>⏱ 35 mins</span>
+                <span>⭐ 4.9</span>
+            </div>
+
+            <div class="price">₹599</div>
+
+            <a href="/booking?service=Head Massage&price=599"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<div class="female-section">
+    <!-- FEMALE SERVICES -->
+
+<div class="category-title female-title">
+
+    <h2>Women's Beauty</h2>
+
+    <p>
+        Premium beauty and skincare services for women.
+    </p>
+
+</div>
+<!-- Women's Service 1 -->
+<div class="services-container">
+
+    <div class="service-card female">
+     <img src="{{ url_for('static', filename='images/gold-facial.webp') }}">
+
+        <div class="service-content">
+
+            <h2>Gold Facial</h2>
+
+            <p>
+                Facial treatment for glowing,
+                refreshed and nourished skin.
+            </p>
+
+            <div class="details">
+                <span>⏱ 50 mins</span>
+                <span>⭐ 4.9</span>
+            </div>
+
+            <div class="price">
+                ₹1499
+            </div>
+
+            <a href="/booking?service=Gold Facial&price=1499"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+            <!-- Women's Service 2 -->
+
+<div class="service-card female">
+     <img src="{{ url_for('static', filename='images/nail art.webp') }}">
+
+    <div class="service-content">
+
+        <h2>Nail Art</h2>
+
+        <p>
+            Trendy nail art designs and premium nail styling services.
+        </p>
+
+        <div class="details">
+            <span>⏱ 60 mins</span>
+            <span>⭐ 4.9</span>
+        </div>
+
+        <div class="price">₹1499</div>
+
+        <a href="/booking?service=Nail Art&price=1499"
+   class="book-btn">
+   Add to Booking
+</a>
+    </div>
+
+</div>
+
+<!-- Women's Service 3 -->
+
+<div class="service-card female">
+     <img src="{{ url_for('static', filename='images/wx thread.png') }}">
+
+    <div class="service-content">
+
+        <h2>Waxing & Threading</h2>
+
+        <p>
+            Smooth skin care treatment with professional waxing and threading.
+        </p>
+
+        <div class="details">
+            <span>⏱ 70 mins</span>
+            <span>⭐ 4.7</span>
+        </div>
+
+        <div class="price">₹999</div>
+<a href="/booking?service=Waxing & Threading&price=999"
+   class="book-btn">
+   Add to Booking
+</a>
+       
+    </div>
+
+</div>
+
+<!-- Women's Service 4 -->
+
+<div class="service-card female">
+     <img src="{{ url_for('static', filename='images/hair rebounding.jpg') }}">
+
+    <div class="service-content">
+
+        <h2>Hair Rebonding</h2>
+
+        <p>
+            Permanent hair smoothening treatment for silky straight hair.
+        </p>
+
+        <div class="details">
+            <span>⏱ 3 hrs</span>
+            <span>⭐ 4.8</span>
+        </div>
+
+        <div class="price">₹4999</div>
+<a href="/booking?service=Hair Rebonding&price=4999"
+   class="book-btn">
+   Add to Booking
+</a>
+    </div>
+
+</div>
+
+<!-- Women's Service 5 -->
+
+<div class="service-card female">
+     <img src="{{ url_for('static', filename='images/body spa.png') }}">
+
+    <div class="service-content">
+
+        <h2>Body Spa</h2>
+
+        <p>
+            Luxury full body spa therapy for complete relaxation and rejuvenation.
+        </p>
+
+        <div class="details">
+            <span>⏱ 90 mins</span>
+            <span>⭐ 5.0</span>
+        </div>
+
+        <div class="price">₹2999</div>
+
+        <a href="/booking?service=Body Spa&price=2999"
+   class="book-btn">
+   Add to Booking
+</a>
+    </div>
+<!-- Women's Service 6-->
+</div>
+    <div class="service-card female">
+     <img src="{{ url_for('static', filename='images/bridal.webp') }}">
+
+        <div class="service-content">
+
+            <h2>Bridal Package</h2>
+
+            <p>
+                Luxury bridal makeover package with makeup,
+                hairstyle and nail art.
+            </p>
+
+            <div class="details">
+                <span>⏱ 4 hrs</span>
+                <span>⭐ 5.0</span>
+            </div>
+
+            <div class="price">
+                ₹5999
+            </div>
+
+           <a href="/booking?service=Bridal Package&price=5999"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+<!-- Women's Service 7 -->
+    <div class="service-card female">
+     <img src="{{ url_for('static', filename='images/mani pedi.webp') }}">
+
+        <div class="service-content">
+
+            <h2>Manicure & Pedicure</h2>
+
+            <p>
+                Nail care treatment for soft hands,
+                beautiful nails and relaxation.
+            </p>
+
+            <div class="details">
+                <span>⏱ 75 mins</span>
+                <span>⭐ 4.8</span>
+            </div>
+
+            <div class="price">
+                ₹1299
+            </div>
+<a href="/booking?service=Manicure & Pedicure&price=1299"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+<!-- Women's Service 8 -->
+    <div class="service-card female">
+     <img src="{{ url_for('static', filename='images/women hair color.webp') }}">
+
+        <div class="service-content">
+
+            <h2>Hair Coloring</h2>
+
+            <p>
+                Premium global hair coloring and fashion highlights.
+            </p>
+
+            <div class="details">
+                <span>⏱ 90 mins</span>
+                <span>⭐ 4.7</span>
+            </div>
+
+            <div class="price">
+                ₹2499
+            </div>
+
+            <a href="/booking?service=Hair Coloring&price=2499"
+   class="book-btn">
+   Add to Booking
+</a>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="footer-bottom">
+
+    <p>© 2026 SalonEase | Beauty & Grooming Redefined</p>
+
+</div>
+<script>
+
+function filterSelection(category){
+
+    const maleSection = document.querySelector('.male-section');
+    const femaleSection = document.querySelector('.female-section');
+
+    if(category === 'all'){
+
+        maleSection.style.display = "block";
+        femaleSection.style.display = "block";
+
+    }
+
+    else if(category === 'male'){
+
+        maleSection.style.display = "block";
+        femaleSection.style.display = "none";
+
+    }
+
+    else if(category === 'female'){
+
+        maleSection.style.display = "none";
+        femaleSection.style.display = "block";
+
+    }
+
+}
+
+</script>
+</body>
+</html>

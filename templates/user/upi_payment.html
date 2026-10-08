@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UPI Payment - SalonEase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#eaf5f3;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow: hidden;
+    padding:20px;
+}
+
+.payment-container{
+
+    width:100%;
+    max-width:650px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.payment-title{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.payment-title h1{
+
+    color:#1f6f6d;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+}
+
+.payment-title p{
+
+    color:#666;
+}
+
+.upi-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-bottom:35px;
+}
+
+.upi-card{
+
+    background:#f7fbfa;
+
+    border:2px solid transparent;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    text-align:center;
+}
+
+.upi-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#1f6f6d;
+}
+
+.upi-card.active{
+
+    border-color:#1f6f6d;
+
+    background:#e6f6f3;
+}
+
+.upi-card img{
+
+    width:55px;
+    height:55px;
+
+    object-fit:contain;
+
+    margin-bottom:15px;
+}
+
+.upi-card h3{
+
+    color:#222;
+
+    font-size:18px;
+}
+
+.pay-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1f6f6d;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.pay-btn:hover{
+
+    background:#175654;
+}
+
+.note{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <div class="payment-title">
+
+        <h1>UPI Payment</h1>
+
+        <p>Select your preferred UPI application</p>
+
+    </div>
+
+    <form action="/payment-success" method="POST">
+
+        <input type="hidden"
+               name="upi_method"
+               id="upi_method">
+
+        <div class="upi-grid">
+
+            <!-- GPay -->
+            <div class="upi-card"
+                 onclick="selectUPI(this,'Google Pay')">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png">
+
+                <h3>Google Pay</h3>
+
+            </div>
+
+            <!-- PhonePe -->
+            <div class="upi-card"
+                 onclick="selectUPI(this,'PhonePe')">
+
+                <img src="https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png">
+
+                <h3>PhonePe</h3>
+
+            </div>
+
+            <!-- Paytm -->
+            <div class="upi-card"
+                 onclick="selectUPI(this,'Paytm')">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png">
+
+                <h3>Paytm</h3>
+
+            </div>
+
+            <!-- BHIM -->
+            <div class="upi-card"
+                 onclick="selectUPI(this,'BHIM UPI')">
+                <img src="{{ url_for('static', filename='images/bhim upi.jpg') }}">
+                <h3>BHIM UPI</h3>
+
+            </div>
+
+        </div>
+
+        <button type="submit"
+                class="pay-btn">
+
+            Proceed Payment
+
+        </button>
+
+    </form>
+
+    <div class="note">
+
+        Your appointment will be confirmed after successful payment.
+
+    </div>
+
+</div>
+
+<script>
+
+function selectUPI(card,method){
+
+    let cards =
+    document.querySelectorAll(".upi-card");
+
+    cards.forEach(c=>{
+        c.classList.remove("active");
+    });
+
+    card.classList.add("active");
+
+    document.getElementById("upi_method").value =
+    method;
+}
+
+</script>
+
+</body>
+
+</html>

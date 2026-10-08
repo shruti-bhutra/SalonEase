@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SalonEase Reports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#eef7f5;
+    padding:40px;
+}
+
+/* HEADING */
+
+h1{
+    color:#264653;
+    margin-bottom:30px;
+    font-size:42px;
+}
+
+/* FILTER BOX */
+
+.filter-box{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:35px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.filter-box form{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.filter-box input{
+    padding:12px 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+}
+
+.filter-box button{
+    background:#69b7b0;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.filter-box button:hover{
+    background:#57a7a0;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    color:#69b7b0;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#555;
+    font-size:16px;
+}
+/* TABLE */
+
+.table-section{
+    margin-top:40px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.table-section h2{
+    margin-bottom:20px;
+    color:#264653;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#69b7b0;
+    color:white;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-block;
+    margin-top:40px;
+    background:#264653;
+    color:white;
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:14px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#1d3742;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADING -->
+
+<h1>SalonEase Reports</h1>
+
+<!-- FILTER SECTION -->
+
+<div class="filter-box">
+
+    <form method="GET" action="/reports">
+
+        <input type="date" name="date">
+
+        <input type="month" name="month">
+
+        <input type="number"
+               name="year"
+               placeholder="Enter Year">
+
+        <button type="submit">
+            Generate Report
+        </button>
+
+    <a href="/download_report"
+   style="
+   background:#264653;
+   color:white;
+   padding:12px 20px;
+   border-radius:10px;
+   text-decoration:none;
+   ">
+   Download Report
+</a>
+<a href="/download_pdf"
+   style="
+   background:#264653;
+   color:white;
+   padding:12px 20px;
+   border-radius:10px;
+   text-decoration:none;
+   margin-left:10px;
+   ">
+   Download PDF
+</a>
+    </form>
+
+</div>
+
+<!-- REPORT CARDS -->
+
+<div class="cards">
+
+    <div class="card">
+        <h2>{{ total_bookings }}</h2>
+        <p>Total Bookings</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ confirmed_bookings }}</h2>
+        <p>Confirmed Appointments</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ completed_bookings }}</h2>
+        <p>Completed Appointments</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ date_bookings }}</h2>
+        <p>Date Wise Bookings</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ month_bookings }}</h2>
+        <p>Month Wise Bookings</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ year_bookings }}</h2>
+        <p>Year Wise Bookings</p>
+    </div>
+
+</div>
+<!-- REPORT TABLE -->
+
+<div class="table-section">
+
+    <h2>Report Data</h2>
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Payment</th>
+        <th>Status</th>
+    </tr>
+
+    {% if report_data %}
+
+        {% for appointment in report_data %}
+
+        <tr>
+
+            <td>{{ appointment[0] }}</td>
+            <td>{{ appointment[1] }}</td>
+            <td>{{ appointment[2] }}</td>
+            <td>{{ appointment[3] }}</td>
+            <td>{{ appointment[4] }}</td>
+            <td>{{ appointment[5] }}</td>
+            <td>{{ appointment[6] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <tr>
+
+            <td colspan="7"
+                style="text-align:center; padding:20px;">
+
+                No Data Found
+
+            </td>
+
+        </tr>
+
+    {% endif %}
+
+</table> 
+</div>
+
+<!-- BACK BUTTON -->
+
+<a href="/admin_dashboard" class="back-btn">
+    ← Back to Dashboard
+</a>
+</body>
+</html>

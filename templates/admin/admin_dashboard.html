@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#eef7f5;
+    padding:40px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.header h1{
+    color:#264653;
+}
+
+.logout-btn{
+    background:#57a7a0;
+    color:white;
+    padding:10px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+.card:hover{
+    transform:translateY(-5px);
+    transition:0.3s;
+}
+
+.card h2{
+    color:#69b7b0;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#555;
+    font-size:16px;
+}
+
+.table-section{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.table-section h2{
+    margin-bottom:20px;
+    color:#264653;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#69b7b0;
+    color:white;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.manage-btns{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+}
+
+.manage-btns a{
+    background:#69b7b0;
+    color:white;
+    padding:12px 20px;
+    text-decoration:none;
+    border-radius:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>SalonEase Admin Dashboard</h1>
+
+    <a href="/admin_logout" class="logout-btn">
+        Logout
+    </a>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+    <div class="card">
+        <h2>{{ total_users }}</h2>
+        <p>Total Users</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_services }}</h2>
+        <p>Total Services</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_bookings }}</h2>
+        <p>Total Appointments</p>
+    </div>
+
+    <div class="card">
+        <h2>24/7</h2>
+        <p>Admin Active</p>
+    </div>
+
+</div>
+
+<!-- RECENT BOOKINGS -->
+
+<div class="table-section">
+
+    <h2>Recent Bookings</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Payment</th>
+        </tr>
+{% if recent_bookings|length == 0 %}
+
+<tr>
+    <td colspan="5" style="text-align:center;">
+        No appointments available.
+    </td>
+</tr>
+
+{% else %}
+
+{% for booking in recent_bookings %}
+
+<tr>
+
+    <td>{{ booking[1] }}</td>
+    <td>{{ booking[2] }}</td>
+    <td>{{ booking[3] }}</td>
+    <td>{{ booking[4] }}</td>
+    <td>{{ booking[5] }}</td>
+
+</tr>
+
+{% endfor %}
+
+{% endif %}
+
+    </table>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<div class="manage-btns">
+
+    <a href="/manage_services">
+        Manage Services
+    </a>
+
+    <a href="/manage_appointments">
+        Manage Appointments
+    </a>
+
+    <a href="/reports">
+        Reports
+    </a>
+</div>
+
+</body>
+</html>

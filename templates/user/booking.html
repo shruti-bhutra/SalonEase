@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SalonEase Booking</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(10,25,25,0.75),rgba(10,25,25,0.75)),
+    url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1600&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    padding:18px 60px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#8ff3e7;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#8ff3e7;
+}
+
+/* MAIN CONTAINER */
+
+.main-container{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:40px auto;
+
+    display:grid;
+    grid-template-columns:1.5fr 0.9fr;
+
+    gap:25px;
+    align-items:start;
+}
+
+/* GLASS CARD */
+
+.booking-card,
+.summary-card{
+
+    background:rgba(255,255,255,0.10);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:26px;
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* TITLES */
+
+.section-title{
+
+    font-size:38px;
+    margin-bottom:25px;
+
+    color:#8ff3e7;
+}
+
+/* INPUTS */
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#d8d8d8;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group select,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+}
+
+textarea{
+    resize:none;
+    height:90px;
+}
+
+select option{
+    color:black;
+}
+
+/* PAYMENT */
+
+.payment-section{
+    margin-top:10px;
+}
+
+.payment-title{
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+.payment-methods{
+
+    display:flex;
+    gap:20px;
+}
+
+.payment-btn{
+
+    flex:1;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-weight:600;
+}
+
+.payment-btn:hover{
+    border:1px solid #8ff3e7;
+}
+
+.payment-btn.active{
+
+    background:#39b8ab;
+}
+
+/* BUTTON */
+
+.book-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#1f6f6d,#39b8ab);
+
+    color:white;
+
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.book-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* SUMMARY */
+
+.summary-title{
+
+    font-size:30px;
+
+    margin-bottom:25px;
+
+    color:#8ff3e7;
+}
+
+.summary-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+    padding-bottom:14px;
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.summary-item span{
+    color:#dcdcdc;
+}
+
+.total-box{
+
+    margin-top:25px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.08);
+}
+
+.total-box h1{
+
+    margin-top:8px;
+
+    color:#8ff3e7;
+}
+
+.note-box{
+
+    margin-top:25px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,0.08);
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    color:#d8d8d8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .main-container{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:18px 25px;
+    }
+}
+.selected-service-box{
+
+    margin-bottom:22px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.selected-service-box p{
+
+    font-size:13px;
+
+    color:#d0d0d0;
+
+    margin-bottom:6px;
+}
+
+.selected-service-box h2{
+
+    color:#8ff3e7;
+
+    font-size:24px;
+
+    font-weight:600;
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- LEFT FORM -->
+
+    <div class="booking-card">
+
+        <h1 class="section-title">
+            Book Appointment
+        </h1>
+
+        <form action="/booking" method="POST">
+
+            <input type="hidden"
+                   name="service"
+                   value="{{ service }}">
+
+            <input type="hidden"
+                   name="price"
+                   value="{{ price }}">
+
+            <input type="hidden"
+                   name="payment"
+                   id="payment-method">
+
+            <!-- SERVICE BOX -->
+
+            <div class="selected-service-box">
+
+                <p>Selected Service</p>
+
+                <h2>{{ service }}</h2>
+
+            </div>
+
+            <!-- GRID -->
+
+            <div class="form-grid">
+
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input type="text"
+                           name="name"
+                           value="{{ username }}"
+                           readonly>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input type="email"
+                           name="email"
+                           value="{{ email }}">
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Appointment Date</label>
+
+                    <input type="date"
+                           name="date"
+                           required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Appointment Time</label>
+
+                    <input type="time"
+                           name="time"
+                           required>
+
+                </div>
+
+            </div>
+
+            <!-- NOTES -->
+
+            <div class="input-group">
+
+                <label>Additional Notes</label>
+
+                <textarea
+                    name="notes"
+                    placeholder="Write requirements..."></textarea>
+
+            </div>
+
+            <!-- PAYMENT -->
+
+            <div class="payment-section">
+
+                <h3 class="payment-title">
+                    Payment Method
+                </h3>
+
+                <div class="payment-methods">
+
+                    <button type="button"
+                            class="payment-btn">
+                        UPI
+                    </button>
+
+                    <button type="button"
+                            class="payment-btn">
+                        Cash
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- SUBMIT -->
+
+            <button type="submit"
+                    class="book-btn">
+
+                Confirm Booking & Payment
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+
+    <div class="summary-card">
+
+        <h2 class="summary-title">
+            Booking Summary
+        </h2>
+
+        <div class="summary-item">
+            <span>Service</span>
+            <strong>{{ service }}</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>Base Price</span>
+            <strong>₹{{ price }}</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>GST</span>
+            <strong>₹{{ gst }}</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>Premium Care</span>
+            <strong>Included</strong>
+        </div>
+
+        <div class="total-box">
+
+            <p>Total Amount</p>
+
+            <h1>₹{{ total }}</h1>
+
+        </div>
+
+        <div class="note-box">
+
+            Your appointment will be confirmed instantly after payment selection.
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const paymentButtons =
+document.querySelectorAll(".payment-btn");
+
+paymentButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        paymentButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        document.getElementById("payment-method").value =
+        button.innerText;
+    });
+
+});
+
+</script>
+
+</body>
+</html>

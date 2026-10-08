@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register - SalonEase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* adjust for navbar */
+    padding: 20px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #e6f2f1;
+    font-family: 'Poppins', sans-serif;
+}
+.form-container {
+    width: 100%;
+    max-width: 380px;   /* controls size */
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 60px;
+    background: white;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #2c2c2c;
+}
+
+.btn-login {
+    background: #1f6f6d;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 15px;
+}
+.register-box {
+    background: white;
+    padding: 25px;
+    width: 340px;
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-group {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* Button */
+.btn-register {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #1f6f6d;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.btn-register:hover {
+    background: #175a58;
+    transform: scale(1.03);
+}
+
+/* Links */
+.extra {
+    margin-top: 10px;
+    font-size: 13px;
+    
+}
+
+.extra a {
+    color: #1f6f6d;
+    text-decoration: none;
+}
+
+.extra a:hover {
+    text-decoration: underline;
+}
+/* Gender Selection */
+.gender-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.gender-card {
+    flex: 1;
+    cursor: pointer;
+}
+
+.gender-card input {
+    display: none;
+}
+
+.card-content {
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.3s;
+    background: #f9f9f9;
+}
+
+.card-content img {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 8px;
+}
+
+/* Hover */
+.gender-card:hover .card-content {
+    border-color: #1f6f6d;
+    transform: scale(1.03);
+}
+
+/* Selected */
+.gender-card input:checked + .card-content {
+    border-color: #1f6f6d;
+    background: #e6f2f1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.btn-register{
+    pointer-events: auto !important;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">✂ SalonEase</div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('services_page') }}">Services</a>
+        <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+    </div>
+</div>
+
+<!-- Register Form -->
+<div class="container">
+
+    <div class="register-box">
+
+        <h2>Create Account</h2>
+
+        <form method="POST" action="{{ url_for('register') }}">
+
+            <!-- NAME -->
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <!-- GENDER -->
+            <div class="input-group">
+
+                <label>Gender</label>
+
+                <div class="gender-box">
+
+                    <!-- Male -->
+                    <label class="gender-card">
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="male"
+                            required
+                        >
+
+                        <div class="card-content">
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+                            <p>Male</p>
+
+                        </div>
+
+                    </label>
+
+                    <!-- Female -->
+                    <label class="gender-card">
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="female"
+                        >
+
+                        <div class="card-content">
+
+                            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png">
+
+                            <p>Female</p>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- REGISTER BUTTON -->
+            <button
+                type="submit"
+                class="btn-register"
+            >
+                Register
+            </button>
+
+        </form>
+
+        <!-- LOGIN LINK -->
+        <div class="extra">
+
+            Already have an account?
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
